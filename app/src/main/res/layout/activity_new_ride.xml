@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/textViewRideName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:layout_marginLeft="4dp"
+        android:layout_marginTop="26dp"
+        android:text="@string/textViewRideName"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/editTextRideName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:layout_marginLeft="4dp"
+        android:layout_marginTop="8dp"
+        android:hint="@string/editTextRideName"
+        android:ems="10"
+        android:inputType="textPersonName"
+        app:layout_constraintStart_toEndOf="@+id/textViewRideName"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textViewFuelConsumption"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:layout_marginLeft="4dp"
+        android:layout_marginTop="32dp"
+        android:text="@string/textViewFuelConsumption"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewRideName" />
+
+    <EditText
+        android:id="@+id/editTextFuelConsumption"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:layout_marginLeft="4dp"
+        android:layout_marginTop="8dp"
+        android:hint="@string/editTextFuelConsumption"
+        android:ems="4"
+        android:inputType="textPersonName"
+        app:layout_constraintStart_toEndOf="@+id/textViewFuelConsumption"
+        app:layout_constraintTop_toBottomOf="@+id/editTextRideName" />
+
+    <TextView
+        android:id="@+id/textViewFuelConsumptionUnit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="@string/textViewFuelConsumptionUnit"
+        app:layout_constraintStart_toEndOf="@+id/editTextFuelConsumption"
+        app:layout_constraintTop_toBottomOf="@+id/textViewRideName" />
+
+    <TextView
+        android:id="@+id/textViewFuelPrice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:layout_marginLeft="4dp"
+        android:layout_marginTop="32dp"
+        android:text="@string/textViewFuelPrice"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewFuelConsumption" />
+
+    <EditText
+        android:id="@+id/editTextFuelPrice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:layout_marginLeft="4dp"
+        android:layout_marginTop="8dp"
+        android:hint="@string/editTextFuelPrice"
+        android:ems="4"
+        android:inputType="textPersonName"
+        app:layout_constraintStart_toEndOf="@+id/textViewFuelPrice"
+        app:layout_constraintTop_toBottomOf="@+id/editTextFuelConsumption" />
+
+    <TextView
+        android:id="@+id/textViewFuelPriceUnit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="@string/textViewFuelPriceUnit"
+        app:layout_constraintStart_toEndOf="@+id/editTextFuelPrice"
+        app:layout_constraintTop_toBottomOf="@+id/textViewFuelConsumption" />
+
+    <Button
+        android:id="@+id/buttonCancelNewRide"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginRight="4dp"
+        android:layout_marginEnd="4dp"
+        android:text="@string/buttonCancel"
+        android:visibility="visible"
+        app:layout_constraintHorizontal_weight="1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/buttonSaveNewRide"
+        app:layout_constraintTop_toBottomOf="@+id/textViewFuelPrice" />
+
+    <Button
+        android:id="@+id/buttonSaveNewRide"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="4dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginEnd="8dp"
+        android:text="@string/buttonSave"
+        android:visibility="visible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_weight="1"
+        app:layout_constraintStart_toEndOf="@+id/buttonCancelNewRide"
+        app:layout_constraintTop_toBottomOf="@+id/textViewFuelPrice" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
