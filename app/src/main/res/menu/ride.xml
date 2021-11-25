@@ -8,6 +8,12 @@
         app:showAsAction="never"/>
 
     <item
+        android:id="@+id/itemEditPassengers"
+        android:orderInCategory="100"
+        android:title="@string/itemEditPassengers"
+        app:showAsAction="never"/>
+
+    <item
         android:id="@+id/itemDeleteRide"
         android:orderInCategory="100"
         android:title="@string/itemDeleteRide"

@@ -4,9 +4,11 @@ import android.app.Application;
 
 import androidx.lifecycle.LiveData;
 
+import com.example.trip_helper.entities.Passenger;
 import com.example.trip_helper.entities.Ride;
 import com.example.trip_helper.entities.Section;
 import com.example.trip_helper.entities.relations.RideWithSections;
+import com.example.trip_helper.entities.relations.RideWithPassengers;
 
 import java.util.List;
 
@@ -69,5 +71,27 @@ public class RideRepository {
 
     LiveData<List<Section>> getRideWithSections(Long rideId) {
         return mRideDao.getRideWithSections(rideId);
+    }
+
+    void insertPassenger(Passenger passenger) {
+        RideRoomDatabase.databaseWriteExecutor.execute(() -> {
+            mRideDao.insertPassenger(passenger); //dodanie nowego elementu za pomocą DAO
+        });
+    }
+
+    void updatePassenger(Passenger passenger) {
+        RideRoomDatabase.databaseWriteExecutor.execute(() -> {
+            mRideDao.updatePassenger(passenger); //aktualizacja elementu za pomocą DAO
+        });
+    }
+
+    void deletePassenger(Passenger passenger) {
+        RideRoomDatabase.databaseWriteExecutor.execute(() -> {
+            mRideDao.deletePassenger(passenger); //skasowanie elementu za pomocą DAO
+        });
+    }
+
+    LiveData<List<Passenger>> getRideWithPassengers(Long rideId) {
+        return mRideDao.getRideWithPassengers(rideId);
     }
 }

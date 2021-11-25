@@ -5,6 +5,7 @@
     <string name="editRideTitle">Edytuj trasę</string>
     <string name="newSectionTitle">Nowy odcinek trasy</string>
     <string name="editSectionTitle">Edytuj odcinek trasy</string>
+    <string name="editPassengersTitle">Pasażerowie</string>
     <string name="textViewRideName">Nazwa:</string>
     <string name="editTextRideName">np. Wakacje 2022</string>
     <string name="textViewFuelConsumption">Spalanie:</string>
@@ -13,6 +14,8 @@
     <string name="textViewFuelPrice">Cena paliwa:</string>
     <string name="editTextFuelPrice">np. 5.75</string>
     <string name="textViewFuelPriceUnit">zł</string>
+    <string name="textViewNumOfPassengers">Liczba pasażerów</string>
+    <string name="editTextNumOfPassengers">np. 5</string>
     <string name="buttonSave">Zapisz</string>
     <string name="buttonCancel">Anuluj</string>
     <string name="emptyFieldError">Pole nie może być puste</string>
@@ -29,6 +32,7 @@
     <string name="itemDeleteRide">Usuń trasę</string>
     <string name="deleteRideDialogTitle">Usunąć trasę?</string>
     <string name="deleteAllRidesDialogTitle">Usunąć wszystkie trasy?</string>
+    <string name="deletePassengerDialogTitle">Usunąć pasażera?</string>
     <string name="dialogDeleteButton">Usuń</string>
     <string name="dialogCancelButton">Anuluj</string>
     <string name="deletedRideToast">Usunięto trasę</string>
@@ -36,4 +40,13 @@
     <string name="buttonDeleteSection">Usuń odcinek</string>
     <string name="deleteSectionDialogTitle">Usunąć odcinek trasy?</string>
     <string name="deletedSectionToast">Usunięto odcinek trasy</string>
+    <string name="deletedPassengerToast">Usunięto pasażera</string>
+    <string name="textViewAddPassengers">Kto bierze udział w przejeździe?</string>
+    <string name="itemEditPassengers">Zarządzaj pasażerami</string>
+    <string name="buttonNewPassenger">Dodaj pasażera</string>
+    <string name="textViewPassengerName">Pasażer</string>
+    <string name="editTextPassengerName">np. Jan</string>
+    <string name="buttonDeletePassenger">Usuń pasażera</string>
+    <string name="newPassengerTitle">Nowy pasażer</string>
+    <string name="editPassengerTitle">Edycja pasażera</string>
 </resources>

@@ -11,7 +11,7 @@ import androidx.room.PrimaryKey;
 
 @Entity
 public class Ride implements Parcelable {
-    @PrimaryKey(autoGenerate = true)
+    @PrimaryKey(autoGenerate = false)
     @ColumnInfo(name = "id")
     private long mId;
 
@@ -29,13 +29,6 @@ public class Ride implements Parcelable {
 
     public Ride(long mId, @NonNull String mName, @NonNull Double mFuelConsumption, @NonNull Double mFuelPrice) {
         this.mId = mId;
-        this.mName = mName;
-        this.mFuelConsumption = mFuelConsumption;
-        this.mFuelPrice = mFuelPrice;
-    }
-
-    @Ignore
-    public Ride(@NonNull String mName, @NonNull Double mFuelConsumption, @NonNull Double mFuelPrice) {
         this.mName = mName;
         this.mFuelConsumption = mFuelConsumption;
         this.mFuelPrice = mFuelPrice;

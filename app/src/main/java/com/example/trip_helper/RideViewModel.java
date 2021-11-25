@@ -6,9 +6,11 @@ import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 
+import com.example.trip_helper.entities.Passenger;
 import com.example.trip_helper.entities.Ride;
 import com.example.trip_helper.entities.Section;
 import com.example.trip_helper.entities.relations.RideWithSections;
+import com.example.trip_helper.entities.relations.RideWithPassengers;
 
 import java.util.List;
 
@@ -56,5 +58,21 @@ public class RideViewModel extends AndroidViewModel {
 
     LiveData<List<Section>> getRideWithSections(Long rideId) {
         return mRepository.getRideWithSections(rideId);
+    }
+
+    public void insertPassenger(Passenger passenger) {
+        mRepository.insertPassenger(passenger);    //dodanie nowego elementu do repozytorium
+    }
+
+    public void updatePassenger(Passenger passenger) {
+        mRepository.updatePassenger(passenger);    //aktualizacja elementu w repozytorium
+    }
+
+    public void deletePassenger(Passenger passenger) {
+        mRepository.deletePassenger(passenger);    //skasowanie elementu z repozytorium
+    }
+
+    LiveData<List<Passenger>> getRideWithPassengers(Long rideId) {
+        return mRepository.getRideWithPassengers(rideId);
     }
 }

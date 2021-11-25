@@ -9,9 +9,11 @@ import androidx.room.Query;
 import androidx.room.Transaction;
 import androidx.room.Update;
 
+import com.example.trip_helper.entities.Passenger;
 import com.example.trip_helper.entities.Ride;
 import com.example.trip_helper.entities.Section;
 import com.example.trip_helper.entities.relations.RideWithSections;
+import com.example.trip_helper.entities.relations.RideWithPassengers;
 
 import java.util.List;
 
@@ -44,4 +46,17 @@ public interface RideDao {
     @Transaction
     @Query("SELECT * FROM section WHERE rideId = :rideId")
     LiveData<List<Section>> getRideWithSections(Long rideId);
+
+    @Insert(onConflict = OnConflictStrategy.ABORT)
+    void insertPassenger(Passenger passenger);
+
+    @Update(onConflict = OnConflictStrategy.ABORT)
+    void updatePassenger(Passenger passenger);
+
+    @Delete
+    void deletePassenger(Passenger passenger);
+
+    @Transaction
+    @Query("SELECT * FROM passenger WHERE rideId = :rideId")
+    LiveData<List<Passenger>> getRideWithPassengers(Long rideId);
 }

@@ -30,6 +30,7 @@ public class RideActivity extends AppCompatActivity implements SectionListAdapte
     public final static int UPDATE_RIDE_REQUEST_CODE = 1;
     public final static int NEW_SECTION_REQUEST_CODE = 2;
     public final static int UPDATE_SECTION_REQUEST_CODE = 3;
+    public final static int EDIT_PASSENGERS_REQUEST_CODE = 4;
 
     private RideViewModel mRideViewModel;
     private SectionListAdapter mAdapter;
@@ -168,7 +169,7 @@ public class RideActivity extends AppCompatActivity implements SectionListAdapte
         getMenuInflater().inflate(R.menu.ride, menu);
 
         // ustawienie czerwonego koloru opcji
-        MenuItem itemDeleteRide = menu.getItem(1);
+        MenuItem itemDeleteRide = menu.getItem(2);
         SpannableString spannableString = new SpannableString((itemDeleteRide.getTitle().toString()));
         spannableString.setSpan(new ForegroundColorSpan(Color.RED), 0, spannableString.length(), 0);
         itemDeleteRide.setTitle(spannableString);
@@ -193,6 +194,15 @@ public class RideActivity extends AppCompatActivity implements SectionListAdapte
             String fuelPriceS = Double.toString(fuelPrice);
             intent.putExtra("fuelPrice", fuelPriceS);
             startActivityForResult(intent, UPDATE_RIDE_REQUEST_CODE);
+            //zwrócenie true = zakończenie obsługi opcji
+            return true;
+        }
+
+        if(id == R.id.itemEditPassengers) {
+            //obsługa opcji
+            Intent intent = new Intent(RideActivity.this, PassengersActivity.class);
+            intent.putExtra("rideId", ride.getMId());
+            startActivityForResult(intent, EDIT_PASSENGERS_REQUEST_CODE);
             //zwrócenie true = zakończenie obsługi opcji
             return true;
         }

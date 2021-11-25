@@ -20,13 +20,17 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
+import com.example.trip_helper.entities.Passenger;
 import com.example.trip_helper.entities.Ride;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity implements RideListAdapter.OnItemClickListener {
 
     public final static int NEW_RIDE_REQUEST_CODE = 1;
     public final static int UPDATE_RIDE_REQUEST_CODE = 2;
+    public final static int ADD_PASSENGERS_REQUEST_CODE = 3;
 
     private RideViewModel mRideViewModel;
     private RideListAdapter mAdapter;
@@ -63,6 +67,7 @@ public class MainActivity extends AppCompatActivity implements RideListAdapter.O
                 intent.putExtra("name", "");
                 intent.putExtra("fuelConsumption", "");
                 intent.putExtra("fuelPrice", "");
+                intent.putExtra("numOfPassengers", "");
                 startActivityForResult(intent, NEW_RIDE_REQUEST_CODE);
             }
         });
@@ -112,16 +117,42 @@ public class MainActivity extends AppCompatActivity implements RideListAdapter.O
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        if(requestCode == NEW_RIDE_REQUEST_CODE && resultCode==RESULT_OK)
-        {
+        if(requestCode == NEW_RIDE_REQUEST_CODE && resultCode==RESULT_OK) {
             Bundle bundle = data.getExtras();
             String name = bundle.getString("name");
             String fuelConsumption = bundle.getString("fuelConsumption");
             Double fuelConsumptionD = Double.parseDouble(fuelConsumption);
             String fuelPrice = bundle.getString("fuelPrice");
             Double fuelPriceD = Double.parseDouble(fuelPrice);
-            Ride ride = new Ride(name, fuelConsumptionD, fuelPriceD);
+            String numOfPassengers = bundle.getString("numOfPassengers");
+
+            long rideId;
+            // jeśli nie ma żadnych przejazdów, ustaw id=1
+            // w przeciwnym wypadku ustaw id o 1 większe niż pierwszego elementu (najpóźniej dodanego)
+            if(mRideViewModel.getAllRides().getValue().size() == 0) {
+                rideId = 1;
+            } else {
+                rideId = mRideViewModel.getAllRides().getValue().get(0).getMId() + 1;
+            }
+
+            Ride ride = new Ride(rideId, name, fuelConsumptionD, fuelPriceD);
             mRideViewModel.insertRide(ride);
+
+            Intent intent = new Intent(MainActivity.this, AddPassengersActivity.class);
+            intent.putExtra("numOfPassengers", numOfPassengers);
+            intent.putExtra("rideId", rideId);
+            startActivityForResult(intent, ADD_PASSENGERS_REQUEST_CODE);
+        }
+
+        if(requestCode == ADD_PASSENGERS_REQUEST_CODE && resultCode==RESULT_OK) {
+            Bundle bundle = data.getExtras();
+            ArrayList<String> passengerNameList = bundle.getStringArrayList("passengerNameList");
+            long rideId = bundle.getLong("rideId");
+
+            for(int i=0; i<passengerNameList.size(); i++) {
+                Passenger passenger = new Passenger(passengerNameList.get(i), rideId);
+                mRideViewModel.insertPassenger(passenger);
+            }
         }
     }
 

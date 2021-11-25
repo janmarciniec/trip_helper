@@ -96,6 +96,30 @@
         app:layout_constraintStart_toEndOf="@+id/editTextFuelPrice"
         app:layout_constraintTop_toBottomOf="@+id/textViewFuelConsumption" />
 
+    <TextView
+        android:id="@+id/textViewNumOfPassengers"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:layout_marginLeft="4dp"
+        android:layout_marginTop="32dp"
+        android:text="@string/textViewNumOfPassengers"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewFuelPrice" />
+
+    <EditText
+        android:id="@+id/editTextNumOfPassengers"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:layout_marginLeft="4dp"
+        android:layout_marginTop="8dp"
+        android:hint="@string/editTextNumOfPassengers"
+        android:ems="4"
+        android:inputType="textPersonName"
+        app:layout_constraintStart_toEndOf="@+id/textViewNumOfPassengers"
+        app:layout_constraintTop_toBottomOf="@+id/editTextFuelPrice" />
+
     <Button
         android:id="@+id/buttonCancelNewRide"
         android:layout_width="0dp"
@@ -110,7 +134,7 @@
         app:layout_constraintHorizontal_weight="1"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/buttonSaveNewRide"
-        app:layout_constraintTop_toBottomOf="@+id/textViewFuelPrice" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewNumOfPassengers" />
 
     <Button
         android:id="@+id/buttonSaveNewRide"
@@ -126,6 +150,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_weight="1"
         app:layout_constraintStart_toEndOf="@+id/buttonCancelNewRide"
-        app:layout_constraintTop_toBottomOf="@+id/textViewFuelPrice" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewNumOfPassengers" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

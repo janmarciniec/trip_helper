@@ -16,8 +16,6 @@ import com.example.trip_helper.entities.Section;
 
 public class NewSectionActivity extends AppCompatActivity {
 
-    private RideViewModel mRideViewModel;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
