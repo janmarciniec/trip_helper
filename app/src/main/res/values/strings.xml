@@ -5,7 +5,6 @@
     <string name="editRideTitle">Edytuj trasę</string>
     <string name="newSectionTitle">Nowy odcinek trasy</string>
     <string name="editSectionTitle">Edytuj odcinek trasy</string>
-    <string name="editPassengersTitle">Pasażerowie</string>
     <string name="textViewRideName">Nazwa:</string>
     <string name="editTextRideName">np. Wakacje 2022</string>
     <string name="textViewFuelConsumption">Spalanie:</string>
@@ -49,4 +48,5 @@
     <string name="buttonDeletePassenger">Usuń pasażera</string>
     <string name="newPassengerTitle">Nowy pasażer</string>
     <string name="editPassengerTitle">Edycja pasażera</string>
+    <string name="buttonSaveNewRide">Dalej</string>
 </resources>

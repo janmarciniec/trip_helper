@@ -10,7 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".NewPassengerActivity" />
-        <activity android:name=".PassengersActivity" />
+        <activity
+            android:name=".PassengersActivity"
+            android:parentActivityName=".MainActivity" />
         <activity android:name=".AddPassengersActivity" />
         <activity android:name=".NewSectionActivity" />
         <activity

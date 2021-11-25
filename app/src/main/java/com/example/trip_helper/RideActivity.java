@@ -202,6 +202,7 @@ public class RideActivity extends AppCompatActivity implements SectionListAdapte
             //obsługa opcji
             Intent intent = new Intent(RideActivity.this, PassengersActivity.class);
             intent.putExtra("rideId", ride.getMId());
+            intent.putExtra("rideName", ride.getMName());
             startActivityForResult(intent, EDIT_PASSENGERS_REQUEST_CODE);
             //zwrócenie true = zakończenie obsługi opcji
             return true;

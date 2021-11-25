@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class NewRideActivity extends AppCompatActivity {
@@ -21,6 +22,7 @@ public class NewRideActivity extends AppCompatActivity {
         EditText editTextRideName = findViewById(R.id.editTextRideName);
         EditText editTextFuelConsumption = findViewById(R.id.editTextFuelConsumption);
         EditText editTextFuelPrice = findViewById(R.id.editTextFuelPrice);
+        TextView textViewNumOfPassengers = findViewById(R.id.textViewNumOfPassengers);
         EditText editTextNumOfPassengers = findViewById(R.id.editTextNumOfPassengers);
         Button buttonSaveNewRide = findViewById(R.id.buttonSaveNewRide);
         Button buttonCancelNewRide = findViewById(R.id.buttonCancelNewRide);
@@ -34,8 +36,14 @@ public class NewRideActivity extends AppCompatActivity {
 
         if(id == 0) {
             this.setTitle(R.string.newRideTitle);
+            textViewNumOfPassengers.setVisibility(View.VISIBLE);
+            editTextNumOfPassengers.setVisibility(View.VISIBLE);
+            buttonSaveNewRide.setText(R.string.buttonSaveNewRide);
         } else {
             this.setTitle(R.string.editRideTitle);
+            textViewNumOfPassengers.setVisibility(View.GONE);
+            editTextNumOfPassengers.setVisibility(View.GONE);
+            buttonSaveNewRide.setText(R.string.buttonSave);
         }
 
         editTextRideName.setText(name);

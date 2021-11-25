@@ -34,8 +34,9 @@ public class PassengersActivity extends AppCompatActivity implements PassengerLi
 
         Bundle bundle = getIntent().getExtras();
         rideId = bundle.getLong("rideId");
+        String rideName = bundle.getString("rideName");
 
-        this.setTitle(R.string.editPassengersTitle);
+        this.setTitle(rideName + ": Pasażerowie");
 
         final Button buttonNewPassenger = findViewById(R.id.buttonNewPassenger);
 
