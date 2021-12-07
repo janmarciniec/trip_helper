@@ -7,8 +7,9 @@ import androidx.lifecycle.LiveData;
 import com.example.trip_helper.entities.Passenger;
 import com.example.trip_helper.entities.Ride;
 import com.example.trip_helper.entities.Section;
-import com.example.trip_helper.entities.relations.RideWithSections;
-import com.example.trip_helper.entities.relations.RideWithPassengers;
+import com.example.trip_helper.entities.relations.PassengerWithSections;
+import com.example.trip_helper.entities.relations.SectionWithPassengers;
+import com.example.trip_helper.entities.relations.SectionsPassengersCrossRef;
 
 import java.util.List;
 
@@ -69,6 +70,10 @@ public class RideRepository {
         });
     }
 
+    LiveData<Integer> getSectionsCount() {
+        return mRideDao.getSectionsCount();
+    }
+
     LiveData<List<Section>> getRideWithSections(Long rideId) {
         return mRideDao.getRideWithSections(rideId);
     }
@@ -93,5 +98,19 @@ public class RideRepository {
 
     LiveData<List<Passenger>> getRideWithPassengers(Long rideId) {
         return mRideDao.getRideWithPassengers(rideId);
+    }
+
+    void insertSectionPassengerCrossRef(SectionsPassengersCrossRef crossRef) {
+        RideRoomDatabase.databaseWriteExecutor.execute(() -> {
+            mRideDao.insertSectionPassengerCrossRef(crossRef); //dodanie nowego elementu za pomocą DAO
+        });
+    }
+
+    List<PassengerWithSections> getSectionsOfPassenger(Long passengerId) {
+        return mRideDao.getSectionsOfPassenger(passengerId);
+    }
+
+    List<SectionWithPassengers> getPassengersOfSection(Long sectionId) {
+        return mRideDao.getPassengersOfSection(sectionId);
     }
 }

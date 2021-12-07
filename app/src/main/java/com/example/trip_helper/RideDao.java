@@ -12,8 +12,9 @@ import androidx.room.Update;
 import com.example.trip_helper.entities.Passenger;
 import com.example.trip_helper.entities.Ride;
 import com.example.trip_helper.entities.Section;
-import com.example.trip_helper.entities.relations.RideWithSections;
-import com.example.trip_helper.entities.relations.RideWithPassengers;
+import com.example.trip_helper.entities.relations.PassengerWithSections;
+import com.example.trip_helper.entities.relations.SectionWithPassengers;
+import com.example.trip_helper.entities.relations.SectionsPassengersCrossRef;
 
 import java.util.List;
 
@@ -43,6 +44,9 @@ public interface RideDao {
     @Delete
     void deleteSection(Section section);
 
+    @Query("SELECT COUNT(*) FROM section")
+    LiveData<Integer> getSectionsCount();
+
     @Transaction
     @Query("SELECT * FROM section WHERE rideId = :rideId")
     LiveData<List<Section>> getRideWithSections(Long rideId);
@@ -59,4 +63,15 @@ public interface RideDao {
     @Transaction
     @Query("SELECT * FROM passenger WHERE rideId = :rideId")
     LiveData<List<Passenger>> getRideWithPassengers(Long rideId);
+
+    @Insert(onConflict = OnConflictStrategy.ABORT)
+    void insertSectionPassengerCrossRef(SectionsPassengersCrossRef crossRef);
+
+    @Transaction
+    @Query("SELECT * FROM passenger WHERE passengerId = :passengerId")
+    List<PassengerWithSections> getSectionsOfPassenger(Long passengerId);
+
+    @Transaction
+    @Query("SELECT * FROM section WHERE sectionId = :sectionId")
+    List<SectionWithPassengers> getPassengersOfSection(Long sectionId);
 }

@@ -9,8 +9,8 @@ import androidx.room.PrimaryKey;
 @Entity
 public class Passenger {
     @PrimaryKey(autoGenerate = true)
-    @ColumnInfo(name = "id")
-    private long mId;
+    @ColumnInfo(name = "passengerId")
+    private long mPassengerId;
 
     @NonNull
     @ColumnInfo(name = "name")
@@ -20,8 +20,8 @@ public class Passenger {
     @ColumnInfo(name = "rideId")
     private long mRideId;
 
-    public Passenger(long mId, @NonNull String mName, long mRideId) {
-        this.mId = mId;
+    public Passenger(long mPassengerId, @NonNull String mName, long mRideId) {
+        this.mPassengerId = mPassengerId;
         this.mName = mName;
         this.mRideId = mRideId;
     }
@@ -32,12 +32,12 @@ public class Passenger {
         this.mRideId = mRideId;
     }
 
-    public long getMId() {
-        return mId;
+    public long getMPassengerId() {
+        return mPassengerId;
     }
 
-    public void setMId(long mId) {
-        this.mId = mId;
+    public void setMPassengerId(long mPassengerId) {
+        this.mPassengerId = mPassengerId;
     }
 
     @NonNull

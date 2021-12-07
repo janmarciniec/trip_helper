@@ -12,7 +12,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
-import android.graphics.Paint;
 import android.os.Bundle;
 import android.text.SpannableString;
 import android.text.style.ForegroundColorSpan;
@@ -24,6 +23,10 @@ import android.widget.Toast;
 
 import com.example.trip_helper.entities.Ride;
 import com.example.trip_helper.entities.Section;
+import com.example.trip_helper.entities.relations.SectionsPassengersCrossRef;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class RideActivity extends AppCompatActivity implements SectionListAdapter.OnItemClickListener {
 
@@ -145,8 +148,18 @@ public class RideActivity extends AppCompatActivity implements SectionListAdapte
             String distance = bundle.getString("distance");
             Double distanceD = Double.parseDouble(distance);
             Long rideId = bundle.getLong("rideId");
-            Section section = new Section(origin, destination, distanceD, rideId);
-            mRideViewModel.insertSection(section);
+            ArrayList<String> passengersOfSection = bundle.getStringArrayList("passengersOfSection");
+
+            LiveDataUtil.observeOnce(mRideViewModel.getSectionsCount(), integer -> {
+                long sectionId = integer + 1;
+                Section section = new Section(sectionId, origin, destination, distanceD, rideId);
+                mRideViewModel.insertSection(section);
+
+                for(int i=0; i<passengersOfSection.size(); i++) {
+                    SectionsPassengersCrossRef crossRef = new SectionsPassengersCrossRef(sectionId, Long.parseLong(passengersOfSection.get(i)));
+                    mRideViewModel.insertSectionPassengerCrossRef(crossRef);
+                }
+            });
         }
 
         if(requestCode == UPDATE_SECTION_REQUEST_CODE && resultCode==RESULT_OK)
@@ -239,7 +252,7 @@ public class RideActivity extends AppCompatActivity implements SectionListAdapte
     @Override
     public void onItemClick(Section section) {
         Intent intent = new Intent(RideActivity.this, NewSectionActivity.class);
-        intent.putExtra("id", section.getMId());
+        intent.putExtra("id", section.getMSectionId());
         intent.putExtra("origin", section.getMOrigin());
         intent.putExtra("destination", section.getMDestination());
         String distanceS = Double.toString(section.getMDistance());

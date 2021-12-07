@@ -3,14 +3,13 @@ package com.example.trip_helper.entities;
 import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
-import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
 @Entity
 public class Section {
-    @PrimaryKey(autoGenerate = true)
-    @ColumnInfo(name = "id")
-    private long mId;
+    @PrimaryKey(autoGenerate = false)
+    @ColumnInfo(name = "sectionId")
+    private long mSectionId;
 
     @NonNull
     @ColumnInfo(name = "origin")
@@ -28,28 +27,20 @@ public class Section {
     @ColumnInfo(name = "rideId")
     private long mRideId;
 
-    public Section(long mId, @NonNull String mOrigin, @NonNull String mDestination, @NonNull Double mDistance, long mRideId) {
-        this.mId = mId;
+    public Section(long mSectionId, @NonNull String mOrigin, @NonNull String mDestination, @NonNull Double mDistance, long mRideId) {
+        this.mSectionId = mSectionId;
         this.mOrigin = mOrigin;
         this.mDestination = mDestination;
         this.mDistance = mDistance;
         this.mRideId = mRideId;
     }
 
-    @Ignore
-    public Section(@NonNull String mOrigin, @NonNull String mDestination, @NonNull Double mDistance, long mRideId) {
-        this.mOrigin = mOrigin;
-        this.mDestination = mDestination;
-        this.mDistance = mDistance;
-        this.mRideId = mRideId;
+    public long getMSectionId() {
+        return mSectionId;
     }
 
-    public long getMId() {
-        return mId;
-    }
-
-    public void setMId(long mId) {
-        this.mId = mId;
+    public void setMSectionId(long mSectionId) {
+        this.mSectionId = mSectionId;
     }
 
     @NonNull

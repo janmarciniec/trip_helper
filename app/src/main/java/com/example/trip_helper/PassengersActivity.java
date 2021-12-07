@@ -135,7 +135,7 @@ public class PassengersActivity extends AppCompatActivity implements PassengerLi
     @Override
     public void onItemClick(Passenger passenger) {
         Intent intent = new Intent(PassengersActivity.this, NewPassengerActivity.class);
-        intent.putExtra("id", passenger.getMId());
+        intent.putExtra("id", passenger.getMRideId());
         intent.putExtra("name", passenger.getMName());
         intent.putExtra("rideId", passenger.getMRideId());
         startActivityForResult(intent, UPDATE_PASSENGER_REQUEST_CODE);

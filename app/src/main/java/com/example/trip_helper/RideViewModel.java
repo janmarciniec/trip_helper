@@ -9,8 +9,9 @@ import androidx.lifecycle.LiveData;
 import com.example.trip_helper.entities.Passenger;
 import com.example.trip_helper.entities.Ride;
 import com.example.trip_helper.entities.Section;
-import com.example.trip_helper.entities.relations.RideWithSections;
-import com.example.trip_helper.entities.relations.RideWithPassengers;
+import com.example.trip_helper.entities.relations.PassengerWithSections;
+import com.example.trip_helper.entities.relations.SectionWithPassengers;
+import com.example.trip_helper.entities.relations.SectionsPassengersCrossRef;
 
 import java.util.List;
 
@@ -56,6 +57,10 @@ public class RideViewModel extends AndroidViewModel {
         mRepository.deleteSection(section);    //skasowanie elementu z repozytorium
     }
 
+    public LiveData<Integer> getSectionsCount() {
+        return mRepository.getSectionsCount();
+    }
+
     LiveData<List<Section>> getRideWithSections(Long rideId) {
         return mRepository.getRideWithSections(rideId);
     }
@@ -74,5 +79,17 @@ public class RideViewModel extends AndroidViewModel {
 
     LiveData<List<Passenger>> getRideWithPassengers(Long rideId) {
         return mRepository.getRideWithPassengers(rideId);
+    }
+
+    public void insertSectionPassengerCrossRef(SectionsPassengersCrossRef crossRef) {
+        mRepository.insertSectionPassengerCrossRef(crossRef);    //dodanie nowego elementu do repozytorium
+    }
+
+    List<PassengerWithSections> getSectionsOfPassenger(Long passengerId) {
+        return mRepository.getSectionsOfPassenger(passengerId);
+    }
+
+    List<SectionWithPassengers> getPassengersOfSection(Long sectionId) {
+        return mRepository.getPassengersOfSection(sectionId);
     }
 }

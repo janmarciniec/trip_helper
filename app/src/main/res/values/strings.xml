@@ -49,4 +49,6 @@
     <string name="newPassengerTitle">Nowy pasażer</string>
     <string name="editPassengerTitle">Edycja pasażera</string>
     <string name="buttonSaveNewRide">Dalej</string>
+    <string name="textViewPassengers">Pasażerowie:</string>
+    <string name="textViewNoPassengers">Brak</string>
 </resources>

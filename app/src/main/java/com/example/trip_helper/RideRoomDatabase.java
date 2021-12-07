@@ -11,11 +11,12 @@ import androidx.sqlite.db.SupportSQLiteDatabase;
 import com.example.trip_helper.entities.Passenger;
 import com.example.trip_helper.entities.Ride;
 import com.example.trip_helper.entities.Section;
+import com.example.trip_helper.entities.relations.SectionsPassengersCrossRef;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-@Database(entities = {Ride.class, Section.class, Passenger.class}, version = 1, exportSchema = false)
+@Database(entities = {Ride.class, Section.class, Passenger.class, SectionsPassengersCrossRef.class}, version = 1, exportSchema = false)
 public abstract class RideRoomDatabase extends RoomDatabase {
     //abstrakcyjna metoda zwracająca DAO
     public abstract RideDao rideDao();
