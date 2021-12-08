@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".NewSectionActivity">
+    tools:context=".SectionActivity">
 
     <TextView
         android:id="@+id/textViewOrigin"
@@ -17,18 +17,19 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <EditText
-        android:id="@+id/editTextOrigin"
+    <TextView
+        android:id="@+id/textViewOriginValue"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="4dp"
         android:layout_marginLeft="4dp"
-        android:layout_marginTop="8dp"
-        android:hint="@string/editTextOrigin"
-        android:ems="10"
-        android:inputType="textPersonName"
+        android:layout_marginTop="26dp"
+        android:textSize="22sp"
+        android:textColor="#000000"
         app:layout_constraintStart_toEndOf="@+id/textViewOrigin"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBaseline_toBaselineOf="@+id/textViewOrigin" />
+
 
     <TextView
         android:id="@+id/textViewDestination"
@@ -41,18 +42,18 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewOrigin" />
 
-    <EditText
-        android:id="@+id/editTextDestination"
+    <TextView
+        android:id="@+id/textViewDestinationValue"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="4dp"
         android:layout_marginLeft="4dp"
-        android:layout_marginTop="8dp"
-        android:hint="@string/editTextDestination"
-        android:ems="10"
-        android:inputType="textPersonName"
+        android:layout_marginTop="32dp"
+        android:textSize="22sp"
+        android:textColor="#000000"
         app:layout_constraintStart_toEndOf="@+id/textViewDestination"
-        app:layout_constraintTop_toBottomOf="@+id/editTextOrigin" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewOriginValue"
+        app:layout_constraintBaseline_toBaselineOf="@+id/textViewDestination" />
 
     <TextView
         android:id="@+id/textViewDistance"
@@ -65,18 +66,18 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewDestination" />
 
-    <EditText
-        android:id="@+id/editTextDistance"
+    <TextView
+        android:id="@+id/textViewDistanceValue"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="4dp"
         android:layout_marginLeft="4dp"
-        android:layout_marginTop="8dp"
-        android:hint="@string/editTextDistance"
-        android:ems="4"
-        android:inputType="textPersonName"
+        android:layout_marginTop="32dp"
+        android:textSize="22sp"
+        android:textColor="#000000"
         app:layout_constraintStart_toEndOf="@+id/textViewDistance"
-        app:layout_constraintTop_toBottomOf="@+id/editTextDestination" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewDestinationValue"
+        app:layout_constraintBaseline_toBaselineOf="@+id/textViewDistance" />
 
     <TextView
         android:id="@+id/textViewDistanceUnit"
@@ -84,7 +85,9 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
         android:text="@string/textViewDistanceUnit"
-        app:layout_constraintStart_toEndOf="@+id/editTextDistance"
+        android:textColor="#000000"
+        android:paddingLeft="4dp"
+        app:layout_constraintStart_toEndOf="@+id/textViewDistanceValue"
         app:layout_constraintTop_toBottomOf="@+id/textViewDestination" />
 
     <TextView
@@ -93,7 +96,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:layout_marginLeft="20dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="25dp"
         android:text="@string/textViewPassengers"
         android:textSize="20sp"
         android:textColor="@color/colorPrimary"
@@ -102,50 +105,54 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewDistance" />
 
-    <LinearLayout
-        android:id="@+id/checkboxContainer"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerview"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginTop="5dp"
         android:layout_marginLeft="20dp"
-        android:layout_marginEnd="20dp"
         android:layout_marginRight="20dp"
-        android:layout_marginTop="10dp"
-        android:orientation="vertical"
+        android:layout_marginBottom="20dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewPassengers">
-    </LinearLayout>
+    </androidx.recyclerview.widget.RecyclerView>
 
-        <Button
-            android:id="@+id/buttonCancelSection"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:layout_marginLeft="8dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginRight="4dp"
-            android:layout_marginEnd="4dp"
-            android:text="@string/buttonCancel"
-            android:visibility="visible"
-            app:layout_constraintHorizontal_weight="1"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/buttonSaveSection"
-            app:layout_constraintTop_toBottomOf="@+id/checkboxContainer" />
+    <Button
+        android:id="@+id/buttonReturn"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginRight="4dp"
+        android:layout_marginEnd="4dp"
+        android:text="@string/buttonReturn"
+        android:visibility="visible"
+        app:layout_constraintHorizontal_weight="1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/buttonDeleteSection"
+        app:layout_constraintTop_toBottomOf="@+id/recyclerview" />
 
-        <Button
-            android:id="@+id/buttonSaveSection"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:layout_marginLeft="4dp"
-            android:layout_marginStart="4dp"
-            android:layout_marginRight="8dp"
-            android:layout_marginEnd="8dp"
-            android:text="@string/buttonSave"
-            android:visibility="visible"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_weight="1"
-            app:layout_constraintStart_toEndOf="@+id/buttonCancelSection"
-            app:layout_constraintTop_toBottomOf="@+id/checkboxContainer" />
+    <Button
+        android:id="@+id/buttonDeleteSection"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:layout_marginLeft="4dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginEnd="8dp"
+        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+        android:text="@string/buttonDeleteSection"
+        android:textColor="#FF0000"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_weight="1"
+        app:layout_constraintStart_toEndOf="@+id/buttonReturn"
+        app:layout_constraintTop_toBottomOf="@+id/recyclerview" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

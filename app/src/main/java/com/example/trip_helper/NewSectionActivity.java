@@ -46,7 +46,6 @@ public class NewSectionActivity extends AppCompatActivity {
         EditText editTextDistance = findViewById(R.id.editTextDistance);
         Button buttonSaveSection = findViewById(R.id.buttonSaveSection);
         Button buttonCancelSection = findViewById(R.id.buttonCancelSection);
-        Button buttonDeleteSection = findViewById(R.id.buttonDeleteSection);
 
         LinearLayout checkboxContainer = findViewById(R.id.checkboxContainer);
 
@@ -59,10 +58,8 @@ public class NewSectionActivity extends AppCompatActivity {
 
         if(id == 0) {
             this.setTitle(R.string.newSectionTitle);
-            buttonDeleteSection.setVisibility(View.INVISIBLE);
         } else {
             this.setTitle(R.string.editSectionTitle);
-            buttonDeleteSection.setVisibility(View.VISIBLE);
         }
 
         editTextOrigin.setText(origin);
@@ -141,29 +138,6 @@ public class NewSectionActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 finish();
-            }
-        });
-
-        buttonDeleteSection.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                AlertDialog.Builder builder = new AlertDialog.Builder(NewSectionActivity.this);
-                builder.setTitle(R.string.deleteSectionDialogTitle);
-                builder.setCancelable(false);
-                builder.setPositiveButton(R.string.dialogDeleteButton, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        Toast.makeText(NewSectionActivity.this, R.string.deletedSectionToast, Toast.LENGTH_SHORT).show();
-                    }
-                });
-
-                builder.setNegativeButton(R.string.dialogCancelButton, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) { }
-                });
-
-                AlertDialog dialog = builder.create();
-                dialog.show();
             }
         });
     }

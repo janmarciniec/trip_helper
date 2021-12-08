@@ -106,11 +106,11 @@ public class RideRepository {
         });
     }
 
-    List<PassengerWithSections> getSectionsOfPassenger(Long passengerId) {
+    LiveData<List<PassengerWithSections>> getSectionsOfPassenger(Long passengerId) {
         return mRideDao.getSectionsOfPassenger(passengerId);
     }
 
-    List<SectionWithPassengers> getPassengersOfSection(Long sectionId) {
+    LiveData<List<SectionWithPassengers>> getPassengersOfSection(Long sectionId) {
         return mRideDao.getPassengersOfSection(sectionId);
     }
 }

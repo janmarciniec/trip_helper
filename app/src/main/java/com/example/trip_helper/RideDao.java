@@ -69,9 +69,9 @@ public interface RideDao {
 
     @Transaction
     @Query("SELECT * FROM passenger WHERE passengerId = :passengerId")
-    List<PassengerWithSections> getSectionsOfPassenger(Long passengerId);
+    LiveData<List<PassengerWithSections>> getSectionsOfPassenger(Long passengerId);
 
     @Transaction
     @Query("SELECT * FROM section WHERE sectionId = :sectionId")
-    List<SectionWithPassengers> getPassengersOfSection(Long sectionId);
+    LiveData<List<SectionWithPassengers>> getPassengersOfSection(Long sectionId);
 }

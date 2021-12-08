@@ -34,6 +34,7 @@ public class RideActivity extends AppCompatActivity implements SectionListAdapte
     public final static int NEW_SECTION_REQUEST_CODE = 2;
     public final static int UPDATE_SECTION_REQUEST_CODE = 3;
     public final static int EDIT_PASSENGERS_REQUEST_CODE = 4;
+    public final static int SECTION_DETAILS_REQUEST_CODE = 5;
 
     private RideViewModel mRideViewModel;
     private SectionListAdapter mAdapter;
@@ -251,14 +252,9 @@ public class RideActivity extends AppCompatActivity implements SectionListAdapte
 
     @Override
     public void onItemClick(Section section) {
-        Intent intent = new Intent(RideActivity.this, NewSectionActivity.class);
-        intent.putExtra("id", section.getMSectionId());
-        intent.putExtra("origin", section.getMOrigin());
-        intent.putExtra("destination", section.getMDestination());
-        String distanceS = Double.toString(section.getMDistance());
-        intent.putExtra("distance", distanceS);
-        intent.putExtra("rideId", ride.getMId());
-        startActivityForResult(intent, UPDATE_SECTION_REQUEST_CODE);
+        Intent intent = new Intent(RideActivity.this, SectionActivity.class);
+        intent.putExtra("section", section);
+        startActivityForResult(intent, SECTION_DETAILS_REQUEST_CODE);
     }
 
 

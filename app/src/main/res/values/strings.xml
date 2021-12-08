@@ -51,4 +51,5 @@
     <string name="buttonSaveNewRide">Dalej</string>
     <string name="textViewPassengers">Pasażerowie:</string>
     <string name="textViewNoPassengers">Brak</string>
+    <string name="buttonReturn">Powrót</string>
 </resources>

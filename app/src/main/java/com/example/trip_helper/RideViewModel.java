@@ -85,11 +85,11 @@ public class RideViewModel extends AndroidViewModel {
         mRepository.insertSectionPassengerCrossRef(crossRef);    //dodanie nowego elementu do repozytorium
     }
 
-    List<PassengerWithSections> getSectionsOfPassenger(Long passengerId) {
+    LiveData<List<PassengerWithSections>> getSectionsOfPassenger(Long passengerId) {
         return mRepository.getSectionsOfPassenger(passengerId);
     }
 
-    List<SectionWithPassengers> getPassengersOfSection(Long sectionId) {
+    LiveData<List<SectionWithPassengers>> getPassengersOfSection(Long sectionId) {
         return mRepository.getPassengersOfSection(sectionId);
     }
 }
