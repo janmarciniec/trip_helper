@@ -117,7 +117,7 @@ public class PassengersActivity extends AppCompatActivity implements PassengerLi
             long id = bundle.getLong("id");
             String name = bundle.getString("name");
             long rideId = bundle.getLong("rideId");
-            Passenger passenger = new Passenger(name, rideId);
+            Passenger passenger = new Passenger(name, rideId, 0.0);
             mRideViewModel.insertPassenger(passenger);
         }
 
@@ -127,7 +127,7 @@ public class PassengersActivity extends AppCompatActivity implements PassengerLi
             long id = bundle.getLong("id");
             String name = bundle.getString("name");
             long rideId = bundle.getLong("rideId");
-            Passenger passenger = new Passenger(id, name, rideId);
+            Passenger passenger = new Passenger(id, name, rideId, 0.0);
             mRideViewModel.updatePassenger(passenger);
         }
     }

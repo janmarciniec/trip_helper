@@ -153,7 +153,7 @@ public class RideActivity extends AppCompatActivity implements SectionListAdapte
 
             LiveDataUtil.observeOnce(mRideViewModel.getSectionsCount(), integer -> {
                 long sectionId = integer + 1;
-                Section section = new Section(sectionId, origin, destination, distanceD, rideId);
+                Section section = new Section(sectionId, origin, destination, distanceD, rideId, 0.0);
                 mRideViewModel.insertSection(section);
 
                 for(int i=0; i<passengersOfSection.size(); i++) {
@@ -172,7 +172,7 @@ public class RideActivity extends AppCompatActivity implements SectionListAdapte
             String distance = bundle.getString("distance");
             Double distanceD = Double.parseDouble(distance);
             Long rideId = bundle.getLong("rideId");
-            Section section = new Section(id, origin, destination, distanceD, rideId);
+            Section section = new Section(id, origin, destination, distanceD, rideId, 0.0);
             mRideViewModel.updateSection(section);
         }
     }

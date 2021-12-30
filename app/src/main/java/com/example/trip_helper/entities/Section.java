@@ -30,12 +30,16 @@ public class Section implements Parcelable {
     @ColumnInfo(name = "rideId")
     private long mRideId;
 
-    public Section(long mSectionId, @NonNull String mOrigin, @NonNull String mDestination, @NonNull Double mDistance, long mRideId) {
+    @ColumnInfo(name = "passengerFee")
+    private Double mPassengerFee;
+
+    public Section(long mSectionId, @NonNull String mOrigin, @NonNull String mDestination, @NonNull Double mDistance, long mRideId, Double mPassengerFee) {
         this.mSectionId = mSectionId;
         this.mOrigin = mOrigin;
         this.mDestination = mDestination;
         this.mDistance = mDistance;
         this.mRideId = mRideId;
+        this.mPassengerFee = mPassengerFee;
     }
 
     public long getMSectionId() {
@@ -81,6 +85,14 @@ public class Section implements Parcelable {
         this.mRideId = mRideId;
     }
 
+    public Double getMPassengerFee() {
+        return mPassengerFee;
+    }
+
+    public void setMPassengerFee(Double mPassengerFee) {
+        this.mPassengerFee = mPassengerFee;
+    }
+
     @Override
     public int describeContents() {
         return 0;
@@ -93,6 +105,7 @@ public class Section implements Parcelable {
         dest.writeString(mDestination);
         dest.writeDouble(mDistance);
         dest.writeLong(mRideId);
+        dest.writeDouble(mPassengerFee);
     }
 
     public static final Parcelable.Creator<Section> CREATOR = new Parcelable.Creator<Section>() {
@@ -111,5 +124,6 @@ public class Section implements Parcelable {
         mDestination = in.readString();
         mDistance = in.readDouble();
         mRideId = in.readLong();
+        mPassengerFee = in.readDouble();
     }
 }

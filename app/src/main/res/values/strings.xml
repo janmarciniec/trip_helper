@@ -52,4 +52,6 @@
     <string name="textViewPassengers">Pasażerowie:</string>
     <string name="textViewNoPassengers">Brak</string>
     <string name="buttonReturn">Powrót</string>
+    <string name="buttonEditRide">Edytuj</string>
+    <string name="buttonCalculate">Oblicz</string>
 </resources>

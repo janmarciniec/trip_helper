@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
@@ -18,6 +19,8 @@ import android.text.style.ForegroundColorSpan;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.Window;
+import android.widget.Button;
 import android.widget.Toast;
 
 import com.example.trip_helper.entities.Passenger;
@@ -150,7 +153,7 @@ public class MainActivity extends AppCompatActivity implements RideListAdapter.O
             long rideId = bundle.getLong("rideId");
 
             for(int i=0; i<passengerNameList.size(); i++) {
-                Passenger passenger = new Passenger(passengerNameList.get(i), rideId);
+                Passenger passenger = new Passenger(passengerNameList.get(i), rideId, 0.0);
                 mRideViewModel.insertPassenger(passenger);
             }
         }
@@ -203,8 +206,32 @@ public class MainActivity extends AppCompatActivity implements RideListAdapter.O
 
     @Override
     public void onItemClick(Ride ride) {
-        Intent intent = new Intent(MainActivity.this, RideActivity.class);
-        intent.putExtra("ride", ride);
-        startActivityForResult(intent, 1);
+        final Dialog dialog = new Dialog(MainActivity.this);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.setCancelable(true);
+        dialog.setContentView(R.layout.dialog_main);
+
+        final Button buttonEditRide = dialog.findViewById(R.id.buttonEditRide);
+        final Button buttonCalculate = dialog.findViewById(R.id.buttonCalculate);
+
+        buttonEditRide.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, RideActivity.class);
+                intent.putExtra("ride", ride);
+                startActivityForResult(intent, 1);
+            }
+        });
+
+        buttonCalculate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, ResultsActivity.class);
+                intent.putExtra("ride", ride);
+                startActivity(intent);
+            }
+        });
+
+        dialog.show();
     }
 }

@@ -9,7 +9,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".SectionActivity"></activity>
+        <activity
+            android:name=".ResultsActivity"
+            android:parentActivityName=".MainActivity">
+        </activity>
+        <activity android:name=".SectionActivity" />
         <activity android:name=".NewPassengerActivity" />
         <activity
             android:name=".PassengersActivity"

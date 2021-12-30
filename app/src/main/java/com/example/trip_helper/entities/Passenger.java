@@ -20,16 +20,21 @@ public class Passenger {
     @ColumnInfo(name = "rideId")
     private long mRideId;
 
-    public Passenger(long mPassengerId, @NonNull String mName, long mRideId) {
+    @ColumnInfo(name = "totalFee")
+    private Double mTotalFee;
+
+    public Passenger(long mPassengerId, @NonNull String mName, long mRideId, Double mTotalFee) {
         this.mPassengerId = mPassengerId;
         this.mName = mName;
         this.mRideId = mRideId;
+        this.mTotalFee = mTotalFee;
     }
 
     @Ignore
-    public Passenger(@NonNull String mName, long mRideId) {
+    public Passenger(@NonNull String mName, long mRideId, Double mTotalFee) {
         this.mName = mName;
         this.mRideId = mRideId;
+        this.mTotalFee = mTotalFee;
     }
 
     public long getMPassengerId() {
@@ -55,5 +60,13 @@ public class Passenger {
 
     public void setMRideId(long mRideId) {
         this.mRideId = mRideId;
+    }
+
+    public Double getMTotalFee() {
+        return mTotalFee;
+    }
+
+    public void setMTotalFee(Double mTotalFee) {
+        this.mTotalFee = mTotalFee;
     }
 }
