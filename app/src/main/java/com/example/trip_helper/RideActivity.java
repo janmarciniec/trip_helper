@@ -183,7 +183,7 @@ public class RideActivity extends AppCompatActivity implements SectionListAdapte
         getMenuInflater().inflate(R.menu.ride, menu);
 
         // ustawienie czerwonego koloru opcji
-        MenuItem itemDeleteRide = menu.getItem(2);
+        MenuItem itemDeleteRide = menu.getItem(3);
         SpannableString spannableString = new SpannableString((itemDeleteRide.getTitle().toString()));
         spannableString.setSpan(new ForegroundColorSpan(Color.RED), 0, spannableString.length(), 0);
         itemDeleteRide.setTitle(spannableString);
@@ -194,6 +194,12 @@ public class RideActivity extends AppCompatActivity implements SectionListAdapte
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         int id = item.getItemId();
+
+        if(id == R.id.calculateFees) {
+            Intent intent = new Intent(RideActivity.this, ResultsActivity.class);
+            intent.putExtra("ride", ride);
+            startActivity(intent);
+        }
 
         if(id == R.id.itemEditRide) {
             //obsługa opcji
